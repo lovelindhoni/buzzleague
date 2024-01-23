@@ -22,7 +22,7 @@ To join BuzzLeague, submit your valid LeetCode username along with your departme
 - [TypeScript](https://www.typescriptlang.org/) - 😅
 - [PicoCSS](https://picocss.com/) - Minimal CSS Framework for semantic HTML
 - [Supabase-js](https://github.com/supabase/supabase-js) - An isomorphic Javascript client for Supabase.
-- [Puppeteer](https://pptr.dev/) - Node.js API for Chrome (Used at the backend, see [buzzleague-api](https://github.com/lovelindhoni/buzzleague-api))
+- [Html-to-image](https://github.com/bubkoo/html-to-image) - Generates an image from a DOM node using HTML5 canvas and SVG.
 
 ## Running Locally 🏃‍♂️
 

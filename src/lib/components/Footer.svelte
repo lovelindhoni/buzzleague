@@ -5,10 +5,10 @@
 <footer class="container">
 	<p>
 		BuzzLeague is a leaderboard app for CIT's students, ranking them based on their LeetCode skills.
-		<br>
-		For more info, check out the <a
-			href="https://github.com/lovelindhoni/buzzleague/blob/main/README.md">readme</a
-		>, and giving the repo a star would be super awesome! 🌟
+		<br />
+		For more info, check out the
+		<a href="https://github.com/lovelindhoni/buzzleague/blob/main/README.md">readme</a>, and giving
+		the repo a star would be super awesome! 🌟
 	</p>
 	<Socials />
 	<p>developed and maintained by lovelin dhoni (1st Year AIML)</p>
