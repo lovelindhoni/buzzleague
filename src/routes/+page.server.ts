@@ -19,7 +19,6 @@ export const load = async ({ fetch, setHeaders }) => {
 	});
 	let userData: User[] = await fetch(`/api/getUsers`).then((response) => response.json()); // returns an array of user data, sorted by their ranking descendingly
 	const topper = userData[0]; // the leetcode user with the highest ranking
-	if (sortingKey !== 'ranking') userData.sort((a, b) => b[sortingKey] - a[sortingKey]);
 	userData = userData.filter((element) => {
 		// filters the users based on department and year, if those values are not "All"
 		return (
@@ -27,13 +26,12 @@ export const load = async ({ fetch, setHeaders }) => {
 			(year == 'All' || element.year == year)
 		);
 	});
+	if (sortingKey !== 'ranking') userData.sort((a, b) => b[sortingKey] - a[sortingKey]);
+
 	return {
 		userData, // filtered userdata
 		topper, // passed to the Topper component
-		pageLimit:
-			Math.ceil(userData.length / Number(tableEntries)) === 0
-				? 1
-				: Math.ceil(userData.length / Number(tableEntries)), // this is the last possible pagination level of table
+		pageLimit: Math.ceil(userData.length / Number(tableEntries)) || 1, // this is the last possible pagination level of table
 		department, // department, year and tableEntries are passed back to the filter component.
 		year,
 		sortingKey,

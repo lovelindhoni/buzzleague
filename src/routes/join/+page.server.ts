@@ -66,7 +66,7 @@ async function validateUser(username: string) {
 		if (profile.errors) {
 			return { success: false, msg: `Leetcode user ${username} doesn't exist` };
 		} // checks whether that particular username exists in leetcode
-		const school = String(profile.data.matchedUser.profile.school).toLowerCase(); // school of leetcode user
+		const school = String(profile.data.matchedUser.profile.school).toLowerCase().trim(); // school of leetcode user
 		if (
 			school !== 'chennai institute of technology and applied research' &&
 			school !== 'chennai institute of technology'

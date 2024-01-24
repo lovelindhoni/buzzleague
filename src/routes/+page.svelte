@@ -26,7 +26,7 @@
 </script>
 
 <MetaData
-	title="BuzzLzeague - League For Codebees"
+	title="BuzzLeague - League For Codebees"
 	description="BuzzLeague, the leaderboard for CIT's CodeBee students, highlighting their LeetCode prowess. Follow the coding journey and see who's leading the pack in skill and expertise"
 />
 <body>
@@ -39,10 +39,12 @@
 				{:else if data.department == 'All'}
 					<strong>All {data.year} year Students</strong> <!--If data is filtered only year wise-->
 				{:else if data.year == 'All'}
-					<strong>All {data.department} Students</strong>
+					<strong>All {data.department === 'SH' ? 'S&H' : data.department} Students</strong>
 					<!--If data is filtered only department wise-->
 				{:else}
-					<strong>All {data.year} year {data.department} Students</strong>
+					<strong
+						>All {data.year} year {data.department === 'SH' ? 'S&H' : data.department} Students</strong
+					>
 					<!--If data is filtered on both year and department wise-->
 				{/if}
 				<p>({pagination}/{data.pageLimit})</p>
@@ -98,12 +100,8 @@
 		<section class="pagination">
 			<p>Showing {data.tableEntries} entries</p>
 			<div class="btn">
-				<button on:click={() => pagination--} disabled={prevDisabled} data-tooltip="ctrl + <"
-					>pre</button
-				>
-				<button on:click={() => pagination++} disabled={nextDisabled} data-tooltip="ctrl + >"
-					>next</button
-				>
+				<button on:click={() => pagination--} disabled={prevDisabled}>pre</button>
+				<button on:click={() => pagination++} disabled={nextDisabled}>next</button>
 			</div>
 		</section>
 		<article>

@@ -16,12 +16,12 @@
 	aria-busy={ariaBusy}
 >
 	{#await getStarCount()}
-		<small>fetching</small>
+		<span></span>
 	{:then starCount}
 		<img src={Github} alt="github-logo" />
 		<small>Stars | {starCount}</small>
 	{:catch}
-		<small>Failed to fetch stars</small>
+		<small>Oops..</small>
 	{/await}
 </button>
 
@@ -41,5 +41,8 @@
 		cursor: pointer;
 		text-decoration: none;
 		height: max-content;
+	}
+	span {
+		display: none;
 	}
 </style>

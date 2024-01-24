@@ -2,7 +2,7 @@ import supabase from '$lib/server/db';
 import { json } from '@sveltejs/kit';
 import type { User, UserResponse, DatabaseQuery } from '$lib/types/types';
 import { UserFlattener } from '$lib/utils/flatteners';
-const LEETCODEQUERY = (str: string) =>
+const leetcodeQuery = (str: string) =>
 	`https://leetcode.com/graphql?query=query{matchedUser(username:"${str}") { profile { userAvatar ranking} submitStats {acSubmissionNum {difficulty count}}} }`; // leetcode's graphql endpoint used by us to scrap data for users
 
 export async function GET({ fetch, setHeaders }) {
@@ -15,7 +15,7 @@ export async function GET({ fetch, setHeaders }) {
 	const deadUsers: string[] = []; // If a user changes his/her username then, he/she deemed to be a dead user
 	const goodUsers: UserResponse[] = [];
 	const fetchPromises = data.map((user) =>
-		fetch(LEETCODEQUERY(user.username)).then((response) => response.json())
+		fetch(leetcodeQuery(user.username)).then((response) => response.json())
 	);
 	// Waiting for all fetch requests to complete
 	const results = await Promise.allSettled(fetchPromises);

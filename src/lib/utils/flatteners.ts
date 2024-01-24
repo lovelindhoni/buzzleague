@@ -36,20 +36,12 @@ class TopperFlattener implements Topper {
 	readonly totalSolved;
 	constructor(user: TopperResponse) {
 		this.username = user.matchedUser.username;
-		this.github =
-			user.matchedUser.githubUrl == '' || user.matchedUser.githubUrl == null
-				? 'https://www.github.com'
-				: user.matchedUser.githubUrl;
+		this.github = user.matchedUser.githubUrl || 'https://www.github.com';
 		this.ranking = user.matchedUser.profile.ranking;
 		this.userAvatar = user.matchedUser.profile.userAvatar;
-		this.aboutMe =
-			user.matchedUser.profile.aboutMe == ''
-				? `nothing worthwhile about ${this.username}`
-				: user.matchedUser.profile.aboutMe;
-		this.skillTags =
-			user.matchedUser.profile.skillTags.length == 0
-				? ['Still A Mystery']
-				: user.matchedUser.profile.skillTags;
+		this.aboutMe = user.matchedUser.profile.aboutMe || `nothing worthwhile about ${this.username}`;
+		this.skillTags = (user.matchedUser.profile.skillTags.length &&
+			user.matchedUser.profile.skillTags) || ['Still A Mystery'];
 		this.recentSubmission = user.recentSubmissionList[0].title;
 		this.recentSubmissionStatus = user.recentSubmissionList[0].statusDisplay;
 		this.totalSolved = user.matchedUser.submitStats.acSubmissionNum[0].count;
