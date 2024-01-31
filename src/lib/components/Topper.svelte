@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import type { Topper, Department, Year } from '$lib/types/types';
+	import type { Topper, Department, Year, SortingKey } from '$lib/types/types';
 	import Save from '$lib/components/Save.svelte';
 	import Github from '$lib/assets/socials/Github.svg';
 	import Logo from '$lib/assets/assorted/logo.svg';
 	export let username: string;
 	export let department: Department;
 	export let year: Year;
+	export let contestRating: number;
+	export let sortingKey: SortingKey;
 	async function fetchTopper() {
 		const topper: Topper = await fetch(`/api/getTopper?topper=${username}`).then((response) =>
 			response.json()
@@ -23,7 +25,11 @@
 			{/if}
 			<hgroup>
 				<h2>BuzzLeague Champion</h2>
-				<p>By Ranking</p>
+				{#if sortingKey === 'contestRating'}
+					<p>By Contest Rating</p>
+				{:else}
+					<p>By Ranking</p>
+				{/if}
 			</hgroup>
 		</div>
 		<Save />
@@ -49,6 +55,7 @@
 				<p><strong>{year + ' year'} {department == 'SH' ? 'S&H' : department}</strong></p>
 				<p><strong>Ranking: </strong> {data.ranking}</p>
 				<p><strong>Skills:</strong> {data.skillTags.join(', ')}</p>
+				<p><strong>Contest Rating:</strong> {contestRating.toFixed(2)}</p>
 				<p><strong>Total Solved: </strong> {data.totalSolved}</p>
 				<p>
 					<strong>Recent Submission: </strong>

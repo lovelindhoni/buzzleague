@@ -17,9 +17,9 @@
 	$: nextDisabled = true ? pagination == data.pageLimit : false; // disables the next button if the pagination level equals the maximum threshold given userData.
 	function shortcuts(event: KeyboardEvent) {
 		// Enables keyboard shorcuts to navigate through pages
-		if (event.key === 'ArrowLeft' && !prevDisabled && event.ctrlKey) {
+		if (event.key === 'ArrowLeft' && !prevDisabled) {
 			pagination--;
-		} else if (event.key === 'ArrowRight' && !nextDisabled && event.ctrlKey) {
+		} else if (event.key === 'ArrowRight' && !nextDisabled) {
 			pagination++;
 		}
 	}
@@ -52,6 +52,8 @@
 				<br />
 				{#if data.sortingKey === 'ranking'}
 					<p>By Ranking</p>
+				{:else if data.sortingKey === 'contestRating'}
+					<p>By Contest Rating</p>
 				{:else}
 					<p>By no. of {data.sortingKey} Problems Solved</p>
 				{/if}
@@ -73,6 +75,7 @@
 						<th>Easy</th>
 						<th>Medium</th>
 						<th>Hard</th>
+						<th>Contest Rating</th>
 						<th>Year</th>
 						<th>Department</th>
 					</tr>
@@ -120,6 +123,8 @@
 			username={data.topper.username}
 			department={data.topper.department}
 			year={data.topper.year}
+			contestRating={data.topper.contestRating}
+			sortingKey={data.sortingKey}
 		/>
 		<DailyChallenge />
 	</main>

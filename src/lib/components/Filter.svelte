@@ -86,6 +86,7 @@
 						<option>Easy</option>
 						<option>Medium</option>
 						<option>Hard</option>
+						<option value="contestRating">Contest Rating</option>
 					</select>
 				</label>
 				<label>

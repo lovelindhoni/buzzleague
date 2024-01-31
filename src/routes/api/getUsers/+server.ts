@@ -2,9 +2,10 @@ import supabase from '$lib/server/db';
 import { json } from '@sveltejs/kit';
 import type { User, UserResponse, DatabaseQuery } from '$lib/types/types';
 import { UserFlattener } from '$lib/utils/flatteners';
-const leetcodeQuery = (str: string) =>
-	`https://leetcode.com/graphql?query=query{matchedUser(username:"${str}") { profile { userAvatar ranking} submitStats {acSubmissionNum {difficulty count}}} }`; // leetcode's graphql endpoint used by us to scrap data for users
-
+const leetcodeQuery = (
+	str: string
+) => `https://leetcode.com/graphql?query=query {matchedUser(username: "${str}") {profile {
+userAvatar ranking } submitStats { acSubmissionNum { difficulty count } } } userContestRanking(username: "${str}") { rating } }`; // leetcode's graphql endpoint used by us to scrap data for users
 export async function GET({ fetch, setHeaders }) {
 	setHeaders({
 		'cache-control': 'public, max-age=300'

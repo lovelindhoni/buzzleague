@@ -56,6 +56,7 @@ class UserFlattener implements User {
 	readonly Hard;
 	readonly year;
 	readonly department;
+	readonly contestRating;
 	constructor(user: UserResponse, filteredData: DatabaseQuery) {
 		this.username = filteredData.username;
 		this.year = filteredData.year;
@@ -65,6 +66,7 @@ class UserFlattener implements User {
 		this.Easy = user.data.matchedUser.submitStats.acSubmissionNum[1].count;
 		this.Medium = user.data.matchedUser.submitStats.acSubmissionNum[2].count;
 		this.Hard = user.data.matchedUser.submitStats.acSubmissionNum[3].count;
+		this.contestRating = user.data.userContestRanking.rating;
 	}
 }
 export { DailyChallengeFlattener, TopperFlattener, UserFlattener };

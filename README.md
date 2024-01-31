@@ -8,9 +8,9 @@ BuzzLeague is a leaderboard application for college students that ranks them bas
 
 - Robust filtering options: List students based on their ranking, number of easy/medium/hard problems solved, department, year, etc.
 - Customizable entries: The number of entries being shown can be customized.
-- BuzzLeague Champion: A special section dedicated to the student with the highest LeetCode ranking.
 - Save Option: Share your champion status by downloading it as an image, which can be shared on LinkedIn or Twitter.
-- Keyboard Shortcuts: Use `Ctrl + <` to navigate to the previous page of the leaderboard and `Ctrl + >` to go forward.
+- Keyboard Shortcuts: Use `<` to navigate to the previous page of the leaderboard and `>` to go forward.
+- BuzzLeague Champion 🏆: Champion status to the student with the highest LeetCode ranking and Contest Rating.
 
 ## How to Join BuzzLeague? 📝
 

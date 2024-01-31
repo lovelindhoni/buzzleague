@@ -9,6 +9,7 @@
 	export let place: number;
 	export let year: Year;
 	export let department: Department;
+	export let contestRating: number;
 </script>
 
 <tr class="space-between">
@@ -23,6 +24,7 @@
 	<td>{Easy}</td>
 	<td>{Medium}</td>
 	<td>{Hard}</td>
+	<td>{contestRating.toFixed(2)}</td>
 	<td>{year}</td>
 	<td>{department === 'SH' ? 'S&H' : department}</td>
 </tr>

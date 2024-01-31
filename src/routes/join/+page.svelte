@@ -47,7 +47,7 @@
 					type="email"
 					autocomplete="email"
 					required
-					placeholder="Your email is on safe hands..."
+					placeholder="Email..."
 					on:invalid={() => (ariaBusy = false)}
 				/>
 			</label>

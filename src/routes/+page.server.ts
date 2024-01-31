@@ -18,7 +18,11 @@ export const load = async ({ fetch, setHeaders }) => {
 		'cache-control': 'public, max-age=300'
 	});
 	let userData: User[] = await fetch(`/api/getUsers`).then((response) => response.json()); // returns an array of user data, sorted by their ranking descendingly
-	const topper = userData[0]; // the leetcode user with the highest ranking
+	let topper = userData[0]; // leetcode user with the highest ranking
+	if (sortingKey === 'contestRating') {
+		userData.sort((a, b) => b[sortingKey] - a[sortingKey]);
+		topper = userData[0]; // leetcode user with the highest contest rating
+	}
 	userData = userData.filter((element) => {
 		// filters the users based on department and year, if those values are not "All"
 		return (
@@ -26,8 +30,9 @@ export const load = async ({ fetch, setHeaders }) => {
 			(year == 'All' || element.year == year)
 		);
 	});
-	if (sortingKey !== 'ranking') userData.sort((a, b) => b[sortingKey] - a[sortingKey]);
-
+	if (sortingKey !== 'ranking' && sortingKey !== 'contestRating') {
+		userData.sort((a, b) => b[sortingKey] - a[sortingKey]);
+	}
 	return {
 		userData, // filtered userdata
 		topper, // passed to the Topper component

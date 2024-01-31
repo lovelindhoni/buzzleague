@@ -19,7 +19,7 @@ type Department =
 	| 'All';
 
 type Entries = '5' | '10' | '15' | '25';
-type SortingKey = 'ranking' | 'Medium' | 'Hard' | 'Easy';
+type SortingKey = 'ranking' | 'Medium' | 'Hard' | 'Easy' | 'contestRating';
 interface TotalSubmission {
 	difficulty: Difficulty;
 	count: number;
@@ -44,6 +44,9 @@ interface UserResponse {
 	// Structure of response from the getUserData endpoint
 	data: {
 		matchedUser: UserStats;
+		userContestRanking: {
+			rating: number;
+		};
 	};
 }
 interface User {
@@ -56,6 +59,7 @@ interface User {
 	Hard: number;
 	year: Year;
 	department: Department;
+	contestRating: number;
 }
 
 interface MatchedUser {
