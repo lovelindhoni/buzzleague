@@ -66,7 +66,7 @@ class UserFlattener implements User {
 		this.Easy = user.data.matchedUser.submitStats.acSubmissionNum[1].count;
 		this.Medium = user.data.matchedUser.submitStats.acSubmissionNum[2].count;
 		this.Hard = user.data.matchedUser.submitStats.acSubmissionNum[3].count;
-		this.contestRating = user.data.userContestRanking.rating;
+		this.contestRating = user.data.userContestRanking?.rating || 0;
 	}
 }
 export { DailyChallengeFlattener, TopperFlattener, UserFlattener };
